@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Anagrama</title>
+	<meta charset="utf-8">
+	<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+	<form>
+		
+		<label>Ingrese una cadena de texto<input type="text" name="cadena" id="cadena"></label>  <br>
+		
+		<label>Ingrese el anagrama que busca (tres digitos)<input type="text" name="anagrama" id="anagrama" maxlength="3"></label> <br>
+		<input type="button" name="btn" id="btn" value="Calcular">
+	</form>
+	<script type="text/javascript">
+		
+			$("#btn").click(function(){
+			Mostrar();
+		})
+			function Mostrar(){
+			var cadena1 = $('#cadena').val();
+			var cadena2 = $('#anagrama').val();
+			var ARcadena1 = cadena1.split("")
+			var ARcadena2 = cadena2.split("")
+			var indice = 0;
+			var total = 0;
+			var array = ARcadena1.length;
+			for (var i = 0; i <= array; i++) {
+				if (ARcadena1[indice]/*0*/==ARcadena2[0]) {
+					indice++;
+					
+					if (ARcadena1[indice]/*1*/==ARcadena2[1]) {
+						indice++;
+						
+						if (ARcadena1[indice]/*2*/==ARcadena2[2]) {total++}
+					}
+					else{
+						
+						if (ARcadena1[indice]/*1*/==ARcadena2[2]){
+							indice++;
+							
+							if (ARcadena1[indice]/*2*/==ARcadena2[1]){total++}
+						}
+					}
+					
+				}
+				
+				if (ARcadena1[indice]/*0*/==ARcadena2[1]) {
+					indice++;
+					if (ARcadena1[indice]/*1*/==ARcadena2[0]){
+						indice++;
+						if (ARcadena1[indice]/*2*/==ARcadena2[2]){total++}
+					}
+					else{
+						if (ARcadena1[indice]/*1*/==ARcadena2[2]){
+							indice++;
+							if (ARcadena1[indice]/*2*/==ARcadena2[0]){total++;}
+						}
+					}
+
+				}
+				if (ARcadena1[indice]/*0*/==ARcadena2[2]) {
+					indice++;
+					if (ARcadena1[indice]/*1*/==ARcadena2[0]){
+						indice++;
+						if (ARcadena1[indice]/*2*/==ARcadena2[1]){total++}
+					}
+					else{
+						if (ARcadena1[indice]/*1*/==ARcadena2[1]){
+							indice++;
+							if (ARcadena1[indice]/*2*/==ARcadena2[0]){total++;}
+						}
+					}
+
+				}
+				else{indice++;}
+
+				}
+				
+			
+			var resultado = document.getElementById('resultado');
+			resultado.innerHTML = '<h2>La cantidad de anagramas encontrados es: '+ total +'</h2>'; 
+
+
+
+			
+
+			}	
+	
+	</script>
+	<div id="resultado"></div>
+</body>
+</html>
